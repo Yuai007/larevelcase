@@ -5,4 +5,4 @@
  * Date: 2018/2/28
  * Time: 上午2:27
  */
-phpinfo();
+//phpinfo();
