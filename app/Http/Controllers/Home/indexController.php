@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Config;
+use App\Models\Issue;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class indexController extends Controller
+class indexController extends CommonController
 {
     //
     public function index(){
 //        $user = DB::table('users')->where('id',2)->get();
 //        dd($user);
-        return view('home.index');
+        $lists = Issue::orderBy('created_at','desc')->simplePaginate(5);
+        $config = Config::all();
+        $webtitle = 'MyCheck007';
+        return view('home.index',compact( 'lists','config','webtitle'));
     }
 }
