@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Model\Category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -13,6 +13,7 @@ class CategoryController extends CommonController
     //get. admin/category   全部分类列表
     public function index(){
         $data = (new Category)->tree();
+//dd($data);
         return view('admin.category.index')->with('data',$data);
     }
     public function changeOrder(){

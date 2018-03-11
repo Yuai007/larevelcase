@@ -13,7 +13,7 @@ class IndexController extends CommonController
 {
     //
     public function index(){
-//        dd()
+//        dd(session( 'user' ));
         return view('admin.index');
 //        var_dump('dsfads');
 //        exit;

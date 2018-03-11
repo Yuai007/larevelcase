@@ -15,8 +15,10 @@ class LoginController extends CommonController
      * 登录
      */
     public function login(){
+        if( session( 'user' ) ){
+            return redirect( 'admin/index' );
+        }
         if ($input = Input::all()){
-//            dd($input);
             $oldusername = $input['name'];
             if (empty($input['name']) || empty($input['password'])){
                 return back()->with('msg','请输入用户名和密码')->with('oldusername',$oldusername);

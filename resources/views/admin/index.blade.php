@@ -1,251 +1,79 @@
-@extends('layouts.admin')
-@section('content')
-    <div class="container-fluid am-cf">
-        <div class="row">
-            <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
-                <div class="page-header-heading"><span class="am-icon-home page-header-heading-icon"></span> 部件首页 <small>Amaze UI</small></div>
-                <p class="page-header-description">Amaze UI 含近 20 个 CSS 组件、20 余 JS 组件，更有多个包含不同主题的 Web 组件。</p>
-            </div>
-            <div class="am-u-lg-3 tpl-index-settings-button">
-                <button type="button" class="page-header-button"><span class="am-icon-paint-brush"></span> 设置</button>
-            </div>
-        </div>
+@extends( 'layouts.admin' )
+@section( 'content' )
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand"><img src="{{asset(  'admin/assets/i/logo.png' )}}"></div>
 
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+            <li class="kuanjie">
+
+                <a href="{{url('admin/category')}}" target="main">文章管理</a>
+                <a href="" target="main">个人中心</a>
+                <a href="{{url('admin/logout')}}">退出登录</a>
+            </li>
+            <li class="am-hide-sm-only" style="float: right;"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="am-cf admin-main">
+
+    <div class="nav-navicon admin-main admin-sidebar">
+
+
+        <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员：</div>
+        <div class="sideMenu">
+            <h3 class="am-icon-flag"><em></em> <a href="#">商品管理</a></h3>
+            <ul>
+                <li><a href="{{url('admin/category')}}" target="main">文章列表</a></li>
+            </ul>
+            <h3 class="am-icon-gears"><em></em> <a href="">系统设置</a></h3>
+            <ul>
+                <li><a href="{{url('admin/pass')}}" target="main">个人中心</a></li>
+                <li><a href="{{url('admin/pass')}}" target="main">修改密码</a></li>
+                <li><a href="{{url('admin/pass')}}" target="main">系统配置</a></li>
+                <li><a href="{{url('admin/pass')}}" target="main">其他</a></li>
+
+            </ul>
+        </div>
+        <!-- sideMenu End -->
+
+        <script type="text/javascript">
+            jQuery(".sideMenu").slide({
+                titCell:"h3", //鼠标触发对象
+                targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+                effect:"slideDown", //targetCell下拉效果
+                delayTime:300 , //效果时间
+                triggerTime:500, //鼠标延迟触发时间（默认150）
+                defaultPlay:true,//默认是否执行效果（默认true）
+                returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
+            });
+        </script>
     </div>
 
-    <div class="row-content am-cf">
-        <div class="row  am-cf">
-            <div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
-                <div class="widget am-cf">
-                    <div class="widget-head am-cf">
-                        <div class="widget-title am-fl">月度财务收支计划</div>
-                        <div class="widget-function am-fr">
-                            <a href="javascript:;" class="am-icon-cog"></a>
-                        </div>
-                    </div>
-                    <div class="widget-body am-fr">
-                        <div class="am-fl">
-                            <div class="widget-fluctuation-period-text">
-                                ￥61746.45
-                                <button class="widget-fluctuation-tpl-btn">
-                                    <i class="am-icon-calendar"></i>
-                                    更多月份
-                                </button>
-                            </div>
-                        </div>
-                        <div class="am-fr am-cf">
-                            <div class="widget-fluctuation-description-amount text-success" am-cf>
-                                +￥30420.56
-
-                            </div>
-                            <div class="widget-fluctuation-description-text am-text-right">
-                                8月份收入
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
-                <div class="widget widget-primary am-cf">
-                    <div class="widget-statistic-header">
-                        本季度利润
-                    </div>
-                    <div class="widget-statistic-body">
-                        <div class="widget-statistic-value">
-                            ￥27,294
-                        </div>
-                        <div class="widget-statistic-description">
-                            本季度比去年多收入 <strong>2593元</strong> 人民币
-                        </div>
-                        <span class="widget-statistic-icon am-icon-credit-card-alt"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
-                <div class="widget widget-purple am-cf">
-                    <div class="widget-statistic-header">
-                        本季度利润
-                    </div>
-                    <div class="widget-statistic-body">
-                        <div class="widget-statistic-value">
-                            ￥27,294
-                        </div>
-                        <div class="widget-statistic-description">
-                            本季度比去年多收入 <strong>2593元</strong> 人民币
-                        </div>
-                        <span class="widget-statistic-icon am-icon-support"></span>
-                    </div>
-                </div>
-            </div>
+    <div class=" admin-content">
+        <div class="daohang">
+            <ul>
+                <li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> <a href="{{url('admin/index')}}">首页</a> </li>
+            </ul>
         </div>
+        <div class="admin">
 
-        <div class="row am-cf">
-            <div class="am-u-sm-12 am-u-md-8">
-                <div class="widget am-cf">
-                    <div class="widget-head am-cf">
-                        <div class="widget-title am-fl">月度财务收支计划</div>
-                        <div class="widget-function am-fr">
-                            <a href="javascript:;" class="am-icon-cog"></a>
-                        </div>
-                    </div>
-                    <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="am-u-sm-12 am-u-md-4">
-                <div class="widget am-cf">
-                    <div class="widget-head am-cf">
-                        <div class="widget-title am-fl">专用服务器负载</div>
-                        <div class="widget-function am-fr">
-                            <a href="javascript:;" class="am-icon-cog"></a>
-                        </div>
-                    </div>
-                    <div class="widget-body widget-body-md am-fr">
-
-                        <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
-                        <div class="am-progress">
-                            <div class="am-progress-bar" style="width: 15%"></div>
-                        </div>
-                        <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
-                        <div class="am-progress">
-                            <div class="am-progress-bar  am-progress-bar-warning" style="width: 75%"></div>
-                        </div>
-                        <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
-                        <div class="am-progress">
-                            <div class="am-progress-bar am-progress-bar-danger" style="width: 35%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row am-cf">
-            <div class="am-u-sm-12 am-u-md-12 am-u-lg-4 widget-margin-bottom-lg ">
-                <div class="tpl-user-card am-text-center widget-body-lg">
-                    <div class="tpl-user-card-title">
-                        禁言小张
-                    </div>
-                    <div class="achievement-subheading">
-                        月度最佳员工
-                    </div>
-                    <img class="achievement-image" src="{{asset(  'admin/assets/img/user07.png' )}}" alt="">
-                    <div class="achievement-description">
-                        禁言小张在
-                        <strong>30天内</strong> 禁言了
-                        <strong>200多</strong>人。
-                    </div>
-                </div>
-            </div>
-
-            <div class="am-u-sm-12 am-u-md-12 am-u-lg-8 widget-margin-bottom-lg">
-
-                <div class="widget am-cf widget-body-lg">
-
-                    <div class="widget-body  am-fr">
-                        <div class="am-scrollable-horizontal ">
-                            <table width="100%" class="am-table am-table-compact am-text-nowrap tpl-table-black " id="example-r">
-                                <thead>
-                                <tr>
-                                    <th>文章标题</th>
-                                    <th>作者</th>
-                                    <th>时间</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="gradeX">
-                                    <td>新加坡大数据初创公司 Latize 获 150 万美元风险融资</td>
-                                    <td>张鹏飞</td>
-                                    <td>2016-09-26</td>
-                                    <td>
-                                        <div class="tpl-table-black-operation">
-                                            <a href="javascript:;">
-                                                <i class="am-icon-pencil"></i> 编辑
-                                            </a>
-                                            <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                <i class="am-icon-trash"></i> 删除
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="even gradeC">
-                                    <td>自拍的“政治角色”：观众背对希拉里自拍合影表示“支持”</td>
-                                    <td>天纵之人</td>
-                                    <td>2016-09-26</td>
-                                    <td>
-                                        <div class="tpl-table-black-operation">
-                                            <a href="javascript:;">
-                                                <i class="am-icon-pencil"></i> 编辑
-                                            </a>
-                                            <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                <i class="am-icon-trash"></i> 删除
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td>关于创新管理，我想和你当面聊聊。</td>
-                                    <td>王宽师</td>
-                                    <td>2016-09-26</td>
-                                    <td>
-                                        <div class="tpl-table-black-operation">
-                                            <a href="javascript:;">
-                                                <i class="am-icon-pencil"></i> 编辑
-                                            </a>
-                                            <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                <i class="am-icon-trash"></i> 删除
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="even gradeC">
-                                    <td>究竟是趋势带动投资，还是投资引领趋势？</td>
-                                    <td>着迷</td>
-                                    <td>2016-09-26</td>
-                                    <td>
-                                        <div class="tpl-table-black-operation">
-                                            <a href="javascript:;">
-                                                <i class="am-icon-pencil"></i> 编辑
-                                            </a>
-                                            <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                <i class="am-icon-trash"></i> 删除
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="even gradeC">
-                                    <td>Docker领域再添一员，网易云发布“蜂巢”，加入云计算之争</td>
-                                    <td>醉里挑灯看键</td>
-                                    <td>2016-09-26</td>
-                                    <td>
-                                        <div class="tpl-table-black-operation">
-                                            <a href="javascript:;">
-                                                <i class="am-icon-pencil"></i> 编辑
-                                            </a>
-                                            <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                <i class="am-icon-trash"></i> 删除
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
-                                <!-- more data -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <iframe src="{{url('admin/info')}}" frameborder="0" width="100%" height="100%" name="main"></iframe>
+            {{--<div class="foods">--}}
+                {{--<ul>版权所有@2015</ul>--}}
+                {{--<dl><a href="" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a></dl>--}}
+            {{--</div>--}}
         </div>
     </div>
-    <script src="{{asset(  'admin/assets/js/amazeui.min.js' )}}"></script>
-    <script src="{{asset(  'admin/assets/js/amazeui.datatables.min.js' )}}"></script>
-    <script src="{{asset(  'admin/assets/js/dataTables.responsive.min.js' )}}"></script>
-    <script src="{{asset(  'admin/assets/js/app.js' )}}"></script>
+
+
+
+
+</div>
+
+
 @endsection
+
+
+
