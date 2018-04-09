@@ -26,15 +26,16 @@
             <div class="sideMenu">
                 <h3 class="am-icon-flag"><em></em> <a href="#">商品管理</a></h3>
                 <ul>
-                    <li><a href="{{url('admin/category')}}" target="main">文章列表</a></li>
+                    <li><a href="{{url('admin/category')}}" target="main">文章分类</a></li>
+                    <li><a href="{{url('admin/article')}}" target="main">文章列表</a></li>
+
                 </ul>
                 <h3 class="am-icon-gears"><em></em> <a href="">系统设置</a></h3>
                 <ul>
                     {{--<li><a href="{{url('admin/pass')}}" target="main">个人中心</a></li>--}}
                     <li><a href="{{url('admin/pass')}}" target="main">修改密码</a></li>
-                    {{--<li><a href="{{url('admin/pass')}}" target="main">系统配置</a></li>--}}
+                    <li><a href="{{url('admin/config')}}" target="main">系统配置</a></li>
                     {{--<li><a href="{{url('admin/pass')}}" target="main">其他</a></li>--}}
-
                 </ul>
             </div>
             <!-- sideMenu End -->

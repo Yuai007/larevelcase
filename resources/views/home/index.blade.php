@@ -20,8 +20,9 @@
             </article>
         @endforeach
         <ul class="am-pagination">
-            <li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>
-            <li class="am-pagination-next"><a href="">Next &raquo;</a></li>
+            {{$lists->links()}}
+            {{--<li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>--}}
+            {{--<li class="am-pagination-next"><a href="">Next &raquo;</a></li>--}}
         </ul>
     </div>
 </div>

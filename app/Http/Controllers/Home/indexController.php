@@ -12,7 +12,8 @@ class indexController extends CommonController
     public function index(){
 //        $user = DB::table('users')->where('id',2)->get();
 //        dd($user);
-        $lists = Issue::orderBy('created_at','desc')->simplePaginate(5);
+        $lists = Issue::orderBy('created_at','desc')->simplePaginate(2);
+        return $lists;
         $config = Config::all();
         $webtitle = 'MyCheck007';
         return view('home.index',compact( 'lists','config','webtitle'));
