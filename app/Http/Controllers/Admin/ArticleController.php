@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -16,7 +17,10 @@ class ArticleController extends CommonController
      * 首页
      */
     public function index(){
-        $lists = Article::orderBy( 'order','desc' )->paginate(1);
+        $lists = Article::orderBy( 'order','desc' )->paginate(10);
+        Redis::set('say','test');
+        $redisinfo = Redis::get('say');
+        return $redisinfo;
 //        return $data;
         return view( "admin.article.index",compact( 'lists' ) );
 
@@ -65,7 +69,8 @@ class ArticleController extends CommonController
     {
 
         $field = Article::find( $art_id );
-        $data = (new Category)->tree();
+        return $field;
+//        $data = (new Category)->tree();
         return view( 'admin.Article.edit',compact( 'field','data' ) );
     }
 

@@ -3,12 +3,12 @@
     <div class="admin-biaogelist" style="top:0px;left:0px;">
 
         <div class="listbiaoti am-cf">
-            <ul class="am-icon-flag on"> 栏目名称</ul>
+            <ul class="am-icon-flag on"> 文章列表</ul>
 
-            <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 > <a href="#">商品列表</a></dl>
+            <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 > <a href="#">文章列表</a></dl>
 
             <dl>
-                <button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus"> 添加产品</button>
+                <button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus"> 添加文章</button>
             </dl>
 
 
@@ -70,7 +70,7 @@
                     <th class="table-id">ID</th>
                     <th class="table-title">标题</th>
                     <th class="table-type">类别</th>
-                    <th class="table-author am-hide-sm-only">上架/下架 <i class="am-icon-check am-text-warning"></i> <i
+                    <th class="table-author am-hide-sm-only">启用/非启用 <i class="am-icon-check am-text-warning"></i> <i
                                 class="am-icon-close am-text-primary"></i></th>
                     <th class="table-date am-hide-sm-only">修改日期</th>
                     <th width="163px" class="table-set">操作</th>
@@ -95,14 +95,15 @@
                         <td>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-success am-round"><span
-                                                class="am-icon-search"></span></button>
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round"><span
-                                                class="am-icon-pencil-square-o"></span></button>
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-warning  am-round"><span
-                                                class="am-icon-copy"></span></button>
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-round"><span
-                                                class="am-icon-trash-o"></span></button>
+                                    <a class="am-btn am-btn-default am-btn-xs am-text-success am-round"><span
+                                                class="am-icon-search"></span></a>
+                                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" href="{{route('article.edit', $list->id)}}"><span
+                                                class="am-icon-pencil-square-o"></span>
+                                        </a>
+                                    <a class="am-btn am-btn-default am-btn-xs am-text-warning  am-round"><span
+                                                class="am-icon-copy"></span></a>
+                                    <a class="am-btn am-btn-default am-btn-xs am-text-danger am-round"><span
+                                                class="am-icon-trash-o" href="javascript:;" onclick="delArt( {{$list->id}} )"></span></a>
                                 </div>
                             </div>
                         </td>
@@ -122,9 +123,9 @@
                 <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 移动</button>
                 <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
             </div>
-
+            {{$lists->links()}}
             <ul class="am-pagination am-fr">
-                {{$lists->links('simple-default')}}
+
                 {{--<li class="am-disabled"><a href="#">«</a></li>--}}
                 {{--<li class="am-active"><a href="#">1</a></li>--}}
                 {{--<li><a href="#">2</a></li>--}}
@@ -136,7 +137,32 @@
 
 
             <hr/>
-            <p>注：.....</p>
+            <p></p>
         </form>
     </div>
+    <script>
+        function delArt( art_id ){
+            //询问框
+            layer.confirm('你确定要删除这编文章吗？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                $.post( "{{url( 'admin/article/' )}}/"+art_id,{'_method':'delete','_token':"{{csrf_token()}}"},function(e){
+//                alert( e.msg );
+//                layer.msg(e.msg, {icon: 1});
+                    if( e.code==0 ){
+                        layer.msg(e.msg, {icon: 6});
+                        location.href = location.href;
+                    }else{
+                        layer.msg(e.msg, {icon: 5});
+                    }
+                });
+//            layer.msg('的确很重要', {icon: 1});
+            }, function(){
+//            layer.msg('也可以这样', {
+//                time: 20000, //20s后自动关闭
+//                btn: ['明白了', '知道了']
+//            });
+            });
+        }
+    </script>
 @endsection

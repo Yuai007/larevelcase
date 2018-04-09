@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
+    <title>后台管理系统</title>
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset(  'admin/assets/css/admin.css' )}}">
     <script src="{{asset(  'admin/assets/js/jquery.min.js' )}}"></script>
     <script src="{{asset(  'admin/assets/js/app.js' )}}"></script>
+    <script src="{{asset(  'admin/assets/js/layer/layer.js' )}}"></script>
 </head>
 <body>
 <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p>
@@ -29,6 +30,7 @@
 <script src="{{asset(  'admin/assets/js/polyfill/rem.min.js' )}}"></script>
 <script src="{{asset(  'admin/assets/js/polyfill/respond.min.js' )}}"></script>
 <script src="{{asset(  'admin/assets/js/amazeui.legacy.js' )}}"></script>
+
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->

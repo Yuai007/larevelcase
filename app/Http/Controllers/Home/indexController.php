@@ -13,7 +13,7 @@ class indexController extends CommonController
 //        $user = DB::table('users')->where('id',2)->get();
 //        dd($user);
         $lists = Issue::orderBy('created_at','desc')->simplePaginate(2);
-        return $lists;
+//        return $lists;
         $config = Config::all();
         $webtitle = 'MyCheck007';
         return view('home.index',compact( 'lists','config','webtitle'));
