@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Model\Article;
-use App\Http\Model\Category;
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -16,8 +16,9 @@ class ArticleController extends CommonController
      * 首页
      */
     public function index(){
-        $data = Article::orderBy( 'id','desc' )->paginate(10);
-        return view( "admin.article.index",compact( 'data' ) );
+        $lists = Article::orderBy( 'order','desc' )->paginate(1);
+//        return $data;
+        return view( "admin.article.index",compact( 'lists' ) );
 
     }
 

@@ -33,3 +33,4 @@ Route::group( ['prefix'=>'admin','namespace'=>'Admin','middleware'=>['web','admi
 Route::group( ['middleware'=>['web']],function (){
 });
 Auth::routes();
+
