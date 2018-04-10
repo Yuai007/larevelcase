@@ -11,4 +11,8 @@
 ////存储一个 值
 ////$redis->set("say","hello world");
 //echo $redis->get("say");     //应输出hello world
-phpinfo();
+//phpinfo();
+$htmlPaths = 'https://www.wsite.site/';
+$pdfPathFull = $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.$pdfPath;
+var_dump($pdfPathFull);
+exec("/home/wkhtmltox/bin/wkhtmltopdf -q -l {$htmlPaths} {$pdfPathFull}");
