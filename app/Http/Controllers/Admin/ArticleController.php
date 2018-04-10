@@ -20,7 +20,6 @@ class ArticleController extends CommonController
         $lists = Article::orderBy( 'order','desc' )->paginate(10);
         Redis::set('say','test');
         $redisinfo = Redis::get('say');
-        return $redisinfo;
 //        return $data;
         return view( "admin.article.index",compact( 'lists' ) );
 
@@ -69,7 +68,7 @@ class ArticleController extends CommonController
     {
 
         $field = Article::find( $art_id );
-        return $field;
+//        return $field;
 //        $data = (new Category)->tree();
         return view( 'admin.Article.edit',compact( 'field','data' ) );
     }
