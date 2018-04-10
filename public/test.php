@@ -13,6 +13,7 @@
 //echo $redis->get("say");     //应输出hello world
 //phpinfo();
 $htmlPaths = 'https://www.wsite.site/';
+$pdfPath = 'test.pdf';
 $pdfPathFull = $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.$pdfPath;
 var_dump($pdfPathFull);
 exec("/home/wkhtmltox/bin/wkhtmltopdf -q -l {$htmlPaths} {$pdfPathFull}");
